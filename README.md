@@ -1,70 +1,128 @@
-# Getting Started with Create React App
+# AstroGrid
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+AstroGrid is a space mission control dashboard application for satellite management and monitoring.
+
+## Features
+
+- Satellite management and monitoring
+- Ground station overview
+- Mission planning and execution
+- Telemetry data visualization
+- Command execution
+- Anomaly detection and tracking
+- User authentication and role-based access control
+
+## Database Setup
+
+AstroGrid uses MySQL as its database system.
+
+### Setting up MySQL
+
+1. Install MySQL on your system if you haven't already.
+2. Create a new database:
+   ```sql
+   CREATE DATABASE astrogrid;
+   ```
+3. Run the schema SQL script to set up the tables:
+   ```
+   mysql -u root -p astrogrid < astrogrid-schema.sql
+   ```
+
+### Environment Configuration
+
+Create a `.env` file in the root directory with the following variables:
+
+```
+# Database configuration
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=your_password
+DB_NAME=astrogrid
+
+# React app database settings
+REACT_APP_DB_HOST=localhost
+REACT_APP_DB_USER=root
+REACT_APP_DB_PASSWORD=your_password
+REACT_APP_DB_NAME=astrogrid
+
+# Application settings
+PORT=3001
+REACT_APP_API_URL=http://localhost:3001/api
+```
+
+## Installation
+
+1. Clone the repository
+2. Install dependencies:
+   ```
+   npm install
+   ```
+3. Start the development server:
+   ```
+   npm run dev
+   ```
+   This will start both the React frontend and the Express backend server.
+
+## Development
+
+### Backend Server
+
+The backend server is built with Express.js and handles the MySQL database operations.
+
+- `server.js` - Main Express server file
+- `astrogrid-schema.sql` - Database schema and sample data
+
+### Frontend Application
+
+The frontend is a React application using:
+
+- React Router for navigation
+- Tailwind CSS for styling
+- Recharts for data visualization
 
 ## Available Scripts
 
-In the project directory, you can run:
+- `npm start` - Runs the React app in development mode
+- `npm run server` - Starts the Express server
+- `npm run dev` - Runs both the server and React app in parallel
+- `npm run build` - Builds the app for production
+- `npm test` - Runs tests
 
-### `npm start`
+## Browser Compatibility
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The application is designed to work in modern browsers and includes polyfills for older browsers.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Architecture
 
-### `npm test`
+AstroGrid uses a layered architecture:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **UI Layer**: React components and pages
+2. **Service Layer**: Database adapter services that handle data operations
+3. **Database Layer**: MySQL database accessed through a RESTful API
 
-### `npm run build`
+In development, the app uses a mock database that simulates MySQL operations. In production, it connects to a real MySQL database through the Express server.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Folder Structure
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- `/src` - React application source code
+  - `/components` - Reusable UI components
+  - `/pages` - Application pages
+  - `/services` - Data services
+  - `/utils` - Utility functions
+- `/public` - Static assets
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Database Structure
 
-### `npm run eject`
+The database consists of these main tables:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- `users` - User accounts and authentication
+- `satellites` - Satellite information
+- `ground_stations` - Ground station details
+- `missions` - Mission information
+- `telemetry` - Satellite telemetry data
+- `commands` - Commands sent to satellites
+- `anomalies` - Detected anomalies
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## License
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the MIT License.
