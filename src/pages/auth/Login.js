@@ -149,9 +149,9 @@ const Login = () => {
                 </div>
                 <div className="mt-6 text-xs text-gray-500 text-center">
                     <p>Sample Accounts:</p>
-                    <p>admin@astrogrid.com / password123 (Admin)</p>
-                    <p>controller@astrogrid.com / password123 (Controller)</p>
-                    <p>observer@astrogrid.com / password123 (Observer)</p>
+                    <p>admin@astronet.io / spaceadmin2025 (Admin)</p>
+                    <p>mission@astronet.io / mission2025ctrl (Controller)</p>
+                    <p>user@astronet.io / viewonly2025 (Observer)</p>
                 </div>
             </div>
         </div>

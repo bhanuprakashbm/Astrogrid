@@ -19,12 +19,21 @@ export function AuthProvider({ children }) {
     useEffect(() => {
         const checkSession = async () => {
             try {
-                const user = authService.getCurrentUser();
-                if (user) {
-                    setCurrentUser(user);
-                    setUserRole(user.role);
-                    setUserData(user);
-                }
+                // Auto-login with admin privileges - no authentication required
+                const defaultUser = {
+                    uid: 1,
+                    displayName: 'Admin User',
+                    email: 'admin@astronet.io',
+                    role: 'Admin'
+                };
+                
+                // Set the user in local storage to persist the session
+                localStorage.setItem('astrogrid_user', JSON.stringify(defaultUser));
+                
+                // Update state with the default user
+                setCurrentUser(defaultUser);
+                setUserRole(defaultUser.role);
+                setUserData(defaultUser);
             } catch (error) {
                 console.error('Session check error:', error);
             } finally {
